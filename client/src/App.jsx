@@ -1,35 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+
+// Importar componentes
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
+import ContactForm from './components/ContactForm';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Estados principales
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [cart, setCart] = useState([]);
+  const [currentView, setCurrentView] = useState('catalogo'); // 'catalogo', 'detalle', 'contacto'
+
+  // Función para cargar productos desde la API
+  const fetchProductos = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch('http://localhost:3000/api/productos');
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+      const data = await response.json();
+      setProductos(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Cargar productos al montar el componente
+  useEffect(() => {
+    fetchProductos();
+  }, []);
+
+  // Función para manejar clic en producto
+  const handleProductClick = (producto) => {
+    setSelectedProduct(producto);
+    setCurrentView('detalle');
+  };
+
+  // Función para volver al catálogo
+  const handleBackToCatalog = () => {
+    setSelectedProduct(null);
+    setCurrentView('catalogo');
+  };
+
+  // Función para añadir producto al carrito
+  const handleAddToCart = (producto) => {
+    setCart((prevCart) => [...prevCart, producto]);
+    alert(`${producto.nombre} añadido al carrito!`);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <Navbar 
+        cartCount={cart.length}
+      />
+      
+      <div className="app-container">
+        <div className="content-wrapper">
+          {currentView === 'catalogo' && (
+            <ProductList
+              productos={productos}
+              loading={loading}
+              error={error}
+              onProductClick={handleProductClick}
+            />
+          )}
+          
+          {currentView === 'detalle' && selectedProduct && (
+            <ProductDetail
+              producto={selectedProduct}
+              onAddToCart={handleAddToCart}
+              onBackToCatalog={handleBackToCatalog}
+            />
+          )}
+          
+          {currentView === 'contacto' && (
+            <ContactForm />
+          )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

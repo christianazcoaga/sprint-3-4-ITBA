@@ -66,3 +66,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* Asegúrate de que el html y body ocupen todo el viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Altura completa del viewport */
+}
+
+/* Asegúrate de que el div #root ocupe todo el tamaño del body */
+#root {
+  height: 100%; /* Altura completa del body */
+  display: flex; /* Opcional: para usar flexbox dentro del root */
+  flex-direction: column; /* Opcional: para organizar hijos en columna */
+}

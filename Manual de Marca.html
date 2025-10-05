@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermanos Jota - Manual de Marca</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .page {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+        }
+        
+        :root {
+            --burnt-sienna: #A0522D;
+            --sage-green: #87A96B;
+            --warm-alabaster: #F5E6D3;
+            --goldenrod: #D4A437;
+            --dusty-rose: #C47A6D;
+            --dark-wood: #3E2723;
+            --light-grey: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            font-size: 11pt;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm 20mm 30mm 20mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+        }
+        
+        .page-header {
+            position: absolute;
+            top: 10mm;
+            left: 20mm;
+            right: 20mm;
+            height: 10mm;
+            border-bottom: 2px solid var(--warm-alabaster);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--burnt-sienna);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        
+        .page-footer {
+            position: absolute;
+            bottom: 10mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 0.8rem;
+            font-variant: small-caps;
+            color: var(--burnt-sienna);
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+        
+        h1, h2, h3, h4 {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.5rem;
+            color: var(--dark-wood);
+            page-break-after: avoid;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 200;
+            letter-spacing: 0.2em;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--burnt-sienna);
+            color: var(--burnt-sienna);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            color: var(--dark-wood);
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--sage-green);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: #444;
+            page-break-inside: avoid;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            page-break-inside: avoid;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background: var(--burnt-sienna);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+        
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-grey);
+        }
+        
+        /* Página de portada */
+        .cover {
+            background: linear-gradient(135deg, var(--warm-alabaster) 0%, #FFF 50%, var(--warm-alabaster) 100%);
+            height: 297mm;
+            width: 210mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            page-break-after: always;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23A0522D" opacity="0.03" x="0" y="0" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="10" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="20" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="30" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="40" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="50" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="60" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="70" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="80" width="100" height="1"/><rect fill="%23A0522D" opacity="0.03" x="0" y="90" width="100" height="1"/></svg>') repeat;
+            background-size: 10px 10px;
+        }
+        
+        .cover h1 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-wood);
+        }
+        
+        .cover .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--burnt-sienna);
+            letter-spacing: 0.3em;
+        }
+        
+        .cover .date {
+            position: absolute;
+            bottom: 3rem;
+            font-size: 1rem;
+            color: var(--dark-wood);
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+        
+        .logo {
+            width: 220px;
+            height: 220px;
+            background: white;
+            border: 3px solid var(--burnt-sienna);
+            border-radius: 50%;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(160, 82, 45, 0.15);
+            overflow: hidden;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* Estilo para el índice */
+        .toc {
+            background: var(--light-grey);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: var(--dark-wood);
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .toc a:hover {
+            border-left-color: var(--burnt-sienna);
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .toc .page-num {
+            color: var(--burnt-sienna);
+            font-weight: 500;
+        }
+        
+        /* Swatch de colores mejorado */
+        .color-swatch {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            vertical-align: middle;
+            margin-right: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .placeholder-img {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: var(--light-grey);
+            border: 2px solid var(--warm-alabaster);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            font-size: 0.9rem;
+            color: var(--burnt-sienna);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            page-break-inside: avoid;
+        }
+        
+        /* Bloques de contenido especial */
+        .highlight-box {
+            background: linear-gradient(to right, var(--warm-alabaster), white);
+            border-left: 4px solid var(--burnt-sienna);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--dark-wood);
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--warm-alabaster);
+        }
+        
+
+        
+        /* Estilos para las secciones con fondo */
+        .section-colors {
+            background: linear-gradient(to bottom, white, var(--light-grey));
+            padding: 2rem;
+            border-radius: 8px;
+            margin: -2rem;
+            padding: 2rem;
+        }
+        
+        /* Logo con bandas de protección */
+        .logo-protection {
+            position: relative;
+            display: block;
+            width: max-content;
+            margin: 2rem auto; /* centra y separa del margen externo */
+        }
+        .logo-protection::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px dashed var(--burnt-sienna);
+            pointer-events: none;
+        }
+        .logo-protection img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--burnt-sienna);
+            display: block;
+        }
+        
+        @media screen {
+            body {
+                background: #ddd;
+            }
+            
+            .page, .cover {
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                margin-bottom: 10mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Portada -->
+    <div class="cover">
+        <div class="logo">
+            <img src="logo-principal.svg" alt="Logo Hermanos Jota" />
+        </div>
+        <h1>Hermanos Jota</h1>
+        <p class="subtitle">Manual de Marca</p>
+        <p class="date">Buenos Aires · 2025</p>
+    </div>
+
+    <!-- Índice -->
+    <div class="page">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>ÍNDICE</span>
+        </div>
+        
+        <h2>Índice</h2>
+        <p class="section-intro">Este manual establece las pautas fundamentales para mantener la coherencia y calidad de la marca Hermanos Jota en todas sus aplicaciones.</p>
+        
+        <div class="toc">
+            <a href="#esencia-marca">
+                <span>Esencia de Marca</span>
+                <span class="page-num">03</span>
+            </a>
+            <a href="#personalidad">
+                <span>Personalidad y Voz</span>
+                <span class="page-num">04</span>
+            </a>
+            <a href="#colores">
+                <span>Paleta de Colores</span>
+                <span class="page-num">05</span>
+            </a>
+            <a href="#tipografia">
+                <span>Tipografía</span>
+                <span class="page-num">06</span>
+            </a>
+            <a href="#logo">
+                <span>Uso del Logo</span>
+                <span class="page-num">07</span>
+            </a>
+
+            <a href="#sustentabilidad">
+                <span>Sustentabilidad y Materiales</span>
+                <span class="page-num">08</span>
+            </a>
+            <a href="#contacto">
+                <span>Contacto y Créditos</span>
+                <span class="page-num">09</span>
+            </a>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Esencia de Marca -->
+    <div class="page" id="esencia-marca">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>ESENCIA DE MARCA</span>
+        </div>
+        
+        <h2>Esencia de Marca</h2>
+        
+        <div class="highlight-box no-break">
+            <h3>Declaración de Sentimiento Central</h3>
+            <p>Hermanos Jota es el redescubrimiento de un arte olvidado: crear muebles que no solo sirven una función, sino que alimentan el alma. Existimos en la intersección entre herencia e innovación, donde la calidez del optimismo de los años 60 se encuentra con la conciencia de la sustentabilidad del 2025. Cada pieza cuenta una historia de artesanía que honra el pasado mientras abraza el futuro.</p>
+        </div>
+        
+        <h3>Viaje Emocional</h3>
+        
+        <div class="no-break">
+            <h4>Primera Impresión</h4>
+            <p>Una sensación de calidez y nostalgia te envuelve, como descubrir un tesoro familiar en perfectas condiciones. Hay un reconocimiento inmediato de calidad e intencionalidad.</p>
+        </div>
+        
+        <div class="no-break">
+            <h4>Conexión Más Profunda</h4>
+            <p>Al explorar más, descubrís los detalles pensados: los materiales sustentables, los principios de diseño atemporal, la historia detrás de cada pieza. Te das cuenta de que esto no es solo mobiliario, es una filosofía de vida.</p>
+        </div>
+        
+        <div class="no-break">
+            <h4>Impacto Duradero</h4>
+            <p>Vivir con Hermanos Jota se convierte en parte de tu ritual diario. Cada pieza envejece con gracia, desarrollando carácter mientras mantiene su belleza esencial. No solo compraste muebles; invertiste en un legado.</p>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Personalidad y Voz -->
+    <div class="page" id="personalidad">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>PERSONALIDAD Y VOZ</span>
+        </div>
+        
+        <h2>Personalidad y Voz</h2>
+        
+        <p class="section-intro">Nuestra comunicación refleja la esencia artesanal y la calidez humana que define cada pieza que creamos.</p>
+        
+        <div class="highlight-box no-break">
+            <p><strong>Nuestra voz de marca encarna las siguientes características:</strong></p>
+            
+            <ul>
+                <li><strong>Cálida pero no empalagosa</strong> — Transmitimos cercanía sin caer en lo artificial</li>
+                <li><strong>Conocedora pero no pretenciosa</strong> — Compartimos nuestra experiencia con humildad</li>
+                <li><strong>Nostálgica pero no anclada en el pasado</strong> — Honramos la tradición mientras innovamos</li>
+                <li><strong>Sofisticada pero accesible</strong> — Elegancia que no intimida</li>
+                <li><strong>Apasionada pero no sermoneadora</strong> — Entusiasmo contagioso sin imposición</li>
+            </ul>
+        </div>
+        
+        <h3>Tono de Comunicación</h3>
+        <p>Hablamos a nuestra audiencia como asesores de confianza y compañeros entusiastas del diseño bello y funcional. Nuestro tono es conversacional pero con autoridad, siempre manteniendo respeto tanto por la tradición como por la innovación.</p>
+        
+        <div class="no-break">
+            <h3>Ejemplos de Voz</h3>
+            <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                <p style="margin-bottom: 0.5rem;"><strong>En lugar de:</strong> "Nuestros muebles son de la más alta calidad"</p>
+                <p style="margin-bottom: 0;"><strong>Decimos:</strong> "Cada pieza cuenta la historia de manos expertas y materiales nobles"</p>
+            </div>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Paleta de Colores -->
+    <div class="page" id="colores">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>PALETA DE COLORES</span>
+        </div>
+        
+        <h2>Paleta de Colores</h2>
+        
+        <p class="section-intro">Nuestra paleta refleja la calidez de la madera natural y la serenidad de los espacios que habitamos.</p>
+        
+        <div class="section-colors no-break">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Color</th>
+                        <th>Nombre</th>
+                        <th>Código HEX</th>
+                        <th>Uso Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="color-swatch" style="background-color: #A0522D;"></span></td>
+                        <td><strong>Siena Tostado</strong></td>
+                        <td>#A0522D</td>
+                        <td>Color principal de marca, títulos principales</td>
+                    </tr>
+                    <tr>
+                        <td><span class="color-swatch" style="background-color: #87A96B;"></span></td>
+                        <td>Verde Salvia</td>
+                        <td>#87A96B</td>
+                        <td>Acento secundario, sustentabilidad</td>
+                    </tr>
+                    <tr>
+                        <td><span class="color-swatch" style="background-color: #F5E6D3;"></span></td>
+                        <td><strong>Alabastro Cálido</strong></td>
+                        <td>#F5E6D3</td>
+                        <td>Fondos principales, fotografía</td>
+                    </tr>
+                    <tr>
+                        <td><span class="color-swatch" style="background-color: #D4A437;"></span></td>
+                        <td>Vara de Oro</td>
+                        <td>#D4A437</td>
+                        <td>Detalles premium, acentos</td>
+                    </tr>
+                    <tr>
+                        <td><span class="color-swatch" style="background-color: #C47A6D;"></span></td>
+                        <td><strong>Rosa Polvoriento</strong></td>
+                        <td>#C47A6D</td>
+                        <td>Acentos suaves, detalles femeninos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Tipografía -->
+    <div class="page" id="tipografia">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>TIPOGRAFÍA</span>
+        </div>
+        
+        <h2>Tipografía</h2>
+        
+        <p class="section-intro">La tipografía combina la elegancia clásica con la funcionalidad moderna, reflejando nuestra filosofía de diseño.</p>
+        
+        <div class="no-break">
+            <h3>Tipografía Primaria</h3>
+            <div class="highlight-box">
+                <p><strong style="font-size: 1.3rem;">Inter / Sans-Serif del Sistema</strong></p>
+                <p><strong>Usada para:</strong> Texto del cuerpo, elementos de UI, aplicaciones digitales</p>
+                <p><strong>Pesos disponibles:</strong></p>
+                <ul style="margin-left: 1rem;">
+                    <li>Light (300) — Textos secundarios y leyendas</li>
+                    <li>Regular (400) — Texto principal</li>
+                    <li>Medium (500) — Énfasis y subtítulos</li>
+                    <li>Bold (700) — Títulos y CTAs</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="no-break">
+            <h3>Tipografía Secundaria</h3>
+            <div class="highlight-box">
+                <p><strong style="font-size: 1.3rem; font-family: Georgia, serif;">Playfair Display / Georgia</strong></p>
+                <p><strong>Usada para:</strong> Títulos editoriales, citas destacadas, contenido premium</p>
+                <p><strong>Pesos disponibles:</strong></p>
+                <ul style="margin-left: 1rem;">
+                    <li>Regular (400) — Títulos elegantes</li>
+                    <li>Bold (700) — Énfasis editorial</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Guías de Uso Tipográfico</h3>
+        <table class="no-break">
+            <thead>
+                <tr>
+                    <th>Aplicación</th>
+                    <th>Especificaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Títulos principales</td>
+                    <td>Playfair Display, mayúsculas, espaciado 0.1em</td>
+                </tr>
+                <tr>
+                    <td>Texto del cuerpo</td>
+                    <td>Inter Regular, 11-12pt, altura de línea 1.6</td>
+                </tr>
+                <tr>
+                    <td>Leyendas</td>
+                    <td>Inter Light, 9pt, espaciado 0.02em</td>
+                </tr>
+                <tr>
+                    <td>Botones y CTAs</td>
+                    <td>Inter Medium, mayúsculas, espaciado 0.08em</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Uso del Logo -->
+    <div class="page" id="logo">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>USO DEL LOGO</span>
+        </div>
+        
+        <h2>Uso del Logo</h2>
+        
+        <p class="section-intro">El logo es el corazón visual de nuestra marca. Su uso correcto garantiza el reconocimiento y la coherencia en todas las aplicaciones.</p>
+        
+        <div class="no-break">
+            <h3>Espacio de Protección</h3>
+            <p>El logo siempre debe tener un espacio libre a su alrededor igual a la altura de la "H" en Hermanos. Este espacio garantiza la legibilidad y el impacto visual.</p>
+            <div class="logo-protection">
+                <img src="logo-principal.svg" alt="Logo Hermanos Jota con bandas de protección" />
+            </div>
+        </div>
+        
+        <div class="no-break">
+            <h3>Tamaños Mínimos</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="application-item">
+                    <h4>Impresión</h4>
+                    <p>25mm de ancho mínimo</p>
+                </div>
+                <div class="application-item">
+                    <h4>Digital</h4>
+                    <p>120px de ancho mínimo</p>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Variantes de Color</h3>
+        <table class="no-break">
+            <tr>
+                <td><strong>Primario</strong></td>
+                <td>Siena Tostado (#A0522D) sobre fondos claros</td>
+            </tr>
+            <tr>
+                <td><strong>Invertido</strong></td>
+                <td>Alabastro Cálido (#F5E6D3) sobre fondos oscuros</td>
+            </tr>
+            <tr>
+                <td><strong>Monocromático</strong></td>
+                <td>Negro o blanco solo cuando el color no está disponible</td>
+            </tr>
+        </table>
+        
+        <div class="no-break">
+            <h3>Usos Incorrectos</h3>
+            <div class="highlight-box" style="background: #FFF3F3; border-left-color: #CC0000;">
+                <ul>
+                    <li>❌ No estirar o distorsionar las proporciones</li>
+                    <li>❌ No colocar sobre fondos complejos o fotografías</li>
+                    <li>❌ No cambiar los colores establecidos</li>
+                    <li>❌ No agregar efectos (sombras, degradados, bordes)</li>
+                    <li>❌ No recrear o modificar los elementos del logo</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Sustentabilidad -->
+    <div class="page" id="sustentabilidad">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>SUSTENTABILIDAD Y MATERIALES</span>
+        </div>
+        
+        <h2>Sustentabilidad y Materiales</h2>
+        
+        <p class="section-intro">Nuestro compromiso con el medio ambiente y las futuras generaciones guía cada decisión en nuestro proceso creativo y productivo.</p>
+        
+        <div class="no-break">
+            <h3>Principios de Abastecimiento</h3>
+            <div class="highlight-box" style="background: linear-gradient(to right, #87A96B20, white);">
+                <ul>
+                    <li>Madera certificada FSC de bosques responsables argentinos</li>
+                    <li>Prioridad a maderas nativas: algarrobo, quebracho, caldén</li>
+                    <li>Solo acabados y adhesivos de bajo COV</li>
+                    <li>Proveedores locales dentro del Gran Buenos Aires</li>
+                    <li>30% mínimo de materiales recuperados o reciclados</li>
+                    <li>Cero plásticos de un solo uso en toda la cadena</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="no-break">
+            <h3>Acabados Naturales</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Acabado</th>
+                        <th>Composición</th>
+                        <th>Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aceite de lino</td>
+                        <td>100% natural prensado en frío</td>
+                        <td>Muebles de uso diario</td>
+                    </tr>
+                    <tr>
+                        <td>Cera de abejas</td>
+                        <td>Origen local certificado</td>
+                        <td>Terminación premium</td>
+                    </tr>
+                    <tr>
+                        <td>Tintes vegetales</td>
+                        <td>Base agua, pigmentos naturales</td>
+                        <td>Cuando se requiere color</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="no-break">
+            <h3>Compromiso de Longevidad</h3>
+            <div class="highlight-box">
+                <h4 style="color: var(--burnt-sienna);">Programa "Herencia Viva"</h4>
+                <ul>
+                    <li><strong>Garantía extendida:</strong> 10 años en estructura, 5 años en acabados</li>
+                    <li><strong>Servicio de restauración:</strong> Recuperamos y renovamos piezas antiguas</li>
+                    <li><strong>Taller de cuidados:</strong> Capacitación gratuita para clientes</li>
+                    <li><strong>Recompra garantizada:</strong> Hasta 40% del valor en piezas bien cuidadas</li>
+                    <li><strong>Certificado de trazabilidad:</strong> Origen de cada material utilizado</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="page" id="contacto">
+        <div class="page-header">
+            <span>HERMANOS JOTA</span>
+            <span>CONTACTO Y CRÉDITOS</span>
+        </div>
+        
+        <h2>Contacto y Créditos</h2>
+        
+        <div class="no-break">
+            <h3>Showroom y Taller</h3>
+            <div class="highlight-box">
+                <p><strong>Hermanos Jota — Casa Taller</strong></p>
+                <p>Av. San Juan 2847<br>
+                C1232AAB — Barrio de San Cristóbal<br>
+                Ciudad Autónoma de Buenos Aires<br>
+                Argentina</p>
+                <p style="margin-top: 1rem;">
+                <strong>Horarios:</strong><br>
+                Lunes a Viernes: 10:00 - 19:00<br>
+                Sábados: 10:00 - 14:00
+                </p>
+            </div>
+        </div>
+        
+        <div class="no-break">
+            <h3>Contacto Digital</h3>
+            <table>
+                <tr>
+                    <td><strong>Sitio web</strong></td>
+                    <td>www.hermanosjota.com.ar</td>
+                </tr>
+                <tr>
+                    <td><strong>Email general</strong></td>
+                    <td>info@hermanosjota.com.ar</td>
+                </tr>
+                <tr>
+                    <td><strong>Ventas</strong></td>
+                    <td>ventas@hermanosjota.com.ar</td>
+                </tr>
+                <tr>
+                    <td><strong>Instagram</strong></td>
+                    <td>@hermanosjota_ba</td>
+                </tr>
+                <tr>
+                    <td><strong>WhatsApp</strong></td>
+                    <td>+54 11 4567-8900</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="no-break">
+            <h3>Créditos del Manual</h3>
+            <div style="background: var(--warm-alabaster); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                <p><strong>Dirección Creativa:</strong> Estudio Hermanos</p>
+                <p><strong>Diseño:</strong> María Fernanda López</p>
+                <p><strong>Fotografía:</strong> Santiago Ciuffo</p>
+                <p><strong>Redacción:</strong> Carolina Mendez</p>
+                <p><strong>Tipografía:</strong> Inter por Rasmus Andersson</p>
+                <p style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--burnt-sienna);">
+                    <strong>© 2025 Hermanos Jota.</strong> Todos los derechos reservados.<br>
+                    Este manual es propiedad de Hermanos Jota Muebles.
+                </p>
+            </div>
+        </div>
+        
+        <div class="page-footer">Hermanos Jota — Manual de Marca — © 2025</div>
+    </div>
+</body>
+</html>
