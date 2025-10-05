@@ -1,16 +1,16 @@
 import React from 'react';
-import Logo from './Logo';
+import logo from '../assets/logo.svg';
 
-const Navbar = ({ cartCount }) => {
+const Navbar = ({ cartCount, onNavigate }) => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div>
-          <Logo size="medium" variant="default" />
+          <img src={logo} alt="Logo" className="navbar-logo" />
         </div>
         <div className="navbar-menu">
-          <button className="navbar-link">Catálogo</button>
-          <button className="navbar-link">Contacto</button>
+          <button className="navbar-link" onClick={() => onNavigate('catalogo')}>Catálogo</button>
+          <button className="navbar-link" onClick={() => onNavigate('contacto')}>Contacto</button>
           <div className="cart-icon">
             🛒
             <span className="cart-count">{cartCount}</span>

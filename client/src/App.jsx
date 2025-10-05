@@ -62,6 +62,7 @@ function App() {
     <div className="App">
       <Navbar 
         cartCount={cart.length}
+        onNavigate={setCurrentView} // Pasar la función para manejar la navegación
       />
       
       <div className="app-container">

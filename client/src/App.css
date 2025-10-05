@@ -16,20 +16,74 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  color: var(--dark-wood);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--warm-alabaster);
+  color: var(--dark-wood);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--dark-wood);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  border-bottom: 3px solid var(--burnt-sienna);
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--sage-green);
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: var(--burnt-sienna);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Asegura que el color del texto también tenga una transición suave */
+}
+
+button:hover {
+  background-color: var(--sage-green);
+  color: var(--dark-wood); /* Cambia el color del texto para que contraste con el fondo */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Asegura que la animación sea suave */
+}
+
+/* Ensure the body and root use flexbox layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /* Navbar */
 .navbar {
   background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
-  color: var(--dark-wood);
-  padding: 1.5rem 0;
-  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
-  border-bottom: 3px solid var(--goldenrod);
-  width: 100%;
+  color: var(--warm-alabaster);
+  padding: 1rem 0;
 }
 
 .navbar-container {
@@ -51,6 +105,12 @@ body {
 
 .navbar-logo-container:hover {
   transform: translateY(-2px);
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 .navbar-logo-img {
@@ -86,23 +146,16 @@ body {
 }
 
 .navbar-link {
-  background: none;
-  border: none;
-  color: var(--warm-alabaster);
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  color: var(--warm-alabaster);
+  transition: color 0.3s;
 }
 
 .navbar-link:hover {
   color: var(--goldenrod);
-  background-color: rgba(212, 164, 55, 0.1);
 }
 
 .cart-icon {
@@ -141,6 +194,7 @@ body {
   width: 100%;
   padding: 2rem 1rem;
   background-color: var(--warm-alabaster);
+  flex-grow: 1;
 }
 
 /* Contenedor interno para el contenido */
@@ -201,6 +255,12 @@ body {
   width: 80px;
   height: 3px;
   background: linear-gradient(90deg, var(--burnt-sienna), var(--goldenrod));
+}
+
+.product-list {
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .product-grid {
@@ -580,7 +640,7 @@ body {
   background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
   color: var(--warm-alabaster);
   padding: 3rem 0 2rem;
-  margin-top: 4rem;
+  margin-top: auto;
   position: relative;
   width: 100%;
 }
@@ -772,7 +832,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;
 }
-#root {
-  width: 100%;
+
+html, body, #root {
   height: 100%;
 }
