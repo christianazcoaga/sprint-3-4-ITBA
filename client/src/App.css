@@ -506,6 +506,21 @@ button:hover {
   background-color: #229954;
 }
 
+.remove-from-cart-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-from-cart-button:hover {
+  background-color: #c0392b;
+}
+
 /* Formulario de contacto */
 .contact-form-container {
   max-width: 700px;

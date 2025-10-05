@@ -55,8 +55,13 @@ function App() {
   // Función para añadir producto al carrito
   const handleAddToCart = (producto) => {
     setCart((prevCart) => [...prevCart, producto]);
-    alert(`${producto.nombre} añadido al carrito!`);
+    alert(`¡${producto.nombre} añadido al carrito!`);
   };
+
+  const handleRemoveFromCart = (productoId) => {
+    setCart((prevCart) => prevCart.filter(p => p.id !== productoId));
+    alert(`¡Producto eliminado del carrito!`);
+  }
 
   return (
     <div className="App">
@@ -79,8 +84,11 @@ function App() {
           {currentView === 'detalle' && selectedProduct && (
             <ProductDetail
               producto={selectedProduct}
-              onAddToCart={handleAddToCart}
               onBackToCatalog={handleBackToCatalog}
+              cart={cart}
+              onAddToCart={handleAddToCart}
+              onRemoveFromCart={handleRemoveFromCart}
+
             />
           )}
           

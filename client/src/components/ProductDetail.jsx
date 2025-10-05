@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductImage from './ProductImage';
 
-const ProductDetail = ({ producto, onAddToCart, onBackToCatalog }) => {
+const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, cart, onRemoveFromCart }) => {
   if (!producto) {
     return (
       <div className="product-detail-error">
@@ -10,6 +10,8 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog }) => {
       </div>
     );
   }
+
+  const isInCart = cart.some(p => p.id === producto.id);
 
   const handleAddToCart = () => {
     onAddToCart(producto);
@@ -52,9 +54,16 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog }) => {
             </ul>
           </div>
           
-          <button className="add-to-cart-button" onClick={handleAddToCart}>
-            Añadir al Carrito
-          </button>
+          {isInCart ? ( 
+            <button className='remove-from-cart-button' onClick={() => onRemoveFromCart(producto.id)}>
+              Eliminar del carrito
+            </button>
+           ) : ( 
+            <button className='add-to-cart-button' onClick={handleAddToCart}>
+              Añadir al carrito
+            </button>
+           )}
+          
         </div>
       </div>
     </div>
