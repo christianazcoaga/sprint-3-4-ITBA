@@ -1,127 +1,93 @@
-Hermanos Jota - E-commerce de Muebles
-Información del Proyecto
+# Hermanos Jota - E-commerce de Muebles
 
-Proyecto: Sprint 3 y 4 - ITBA
-Integrantes: Azcoaga Christian, Bibilaqua Matias, Bellomo Lucca Daniel, Carrillo Gonzalo Alejo
-Tecnologías: Node.js, Express.js, React, Vite
-Arquitectura: Monorepo con Backend (API REST) y Frontend (SPA)
+## Información del Proyecto
 
-Objetivos de Aprendizaje
+**Proyecto:** Sprint 3 y 4 - ITBA  
+**Integrantes:**
+- Azcoaga, Christian
+- Bibilaqua, Matias
+- Bellomo, Lucca Daniel
+- Carrillo, Gonzalo Alejo
+- Simone, Santiago
 
-Construcción de servidor web y API REST con Express.
-Definición modular de rutas con express.Router.
-Implementación de middlewares personalizados.
-Desarrollo de interfaz con React y manejo de estado con useState.
-Comunicación entre componentes mediante props.
-Renderizado dinámico y condicional.
-Conexión entre frontend y backend usando fetch.
+---
 
-Estructura del Proyecto
-sprint-3-4-ITBA/
-├── backend/
-│   ├── routes/
-│   │   └── productos.js
-│   ├── productos.js
-│   ├── server.js
-│   └── package.json
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── ProductCard.jsx
-│   │   │   ├── ProductList.jsx
-│   │   │   ├── ProductDetail.jsx
-│   │   │   └── ContactForm.jsx
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   └── main.jsx
-│   └── package.json
-└── README.md
+## Instrucciones de Instalación
 
-Instalación
-Requisitos
+### 1. Instalar dependencias del Backend
 
-Node.js 16 o superior
-npm (incluido con Node.js)
+```bash
+cd backend
+npm install
+```
 
-Pasos
+### 2. Instalar dependencias del Frontend
 
-Clonar el repositorio:
+```bash
+cd client
+npm install
+```
 
-git clone [URL_DEL_REPOSITORIO]
-cd sprint-3-4-ITBA
+---
 
+## Instrucciones de Ejecución
 
-Instalar dependencias:
+### Iniciar el Backend (API)
 
-cd backend && npm install
-cd ../client && npm install
-
-
-(Opcional) Agregar imágenes en client/public/images/.
-
-Ejecución
-Opción 1: Terminales separadas
-
-Backend
-
+```bash
 cd backend
 npm run dev
+```
 
+El servidor estará disponible en: **http://localhost:3000**
 
-Disponible en: http://localhost:3000
+### Iniciar el Frontend (React)
 
-Frontend
-
+```bash
 cd client
 npm run dev
+```
 
+La aplicación estará disponible en: **http://localhost:5173**
 
-Disponible en: http://localhost:5173
+> **Nota:** Es necesario ejecutar ambos servidores simultáneamente en terminales separadas.
 
-Opción 2: Scripts en la raíz del proyecto
-npm run start:backend
-npm run start:frontend
+---
 
-API del Backend
+## Arquitectura del Proyecto
 
-GET /api/productos → Lista todos los productos
+### Backend (API REST con Express)
 
-GET /api/productos/:id → Obtiene un producto por ID
+- **Servidor:** Express.js corriendo en el puerto 3000
+- **Fuente de datos:** Array de productos en archivo local (`productos.js`)
+- **Rutas modulares:** Organizadas con `express.Router` en carpeta `routes/`
+- **Middlewares:**
+  - Logging de peticiones (método y URL)
+  - `express.json()` para parsear JSON
+  - CORS habilitado para comunicación con frontend
+  - Manejador de errores centralizado (404 y 500)
 
-404 / 500 → Manejadores de errores
+**Endpoints disponibles:**
+- `GET /api/productos` - Obtiene todos los productos
+- `GET /api/productos/:id` - Obtiene un producto específico por ID
 
-Middleware de logging y express.json() habilitado
+### Frontend (Single Page Application con React)
 
-Frontend (React)
-Componentes Principales
+- **Framework:** React con Vite como build tool
+- **Arquitectura de componentes:** Componentes reutilizables (`Navbar`, `Footer`, `ProductList`, `ProductCard`, `ProductDetail`, `ContactForm`)
+- **Manejo de estado:** Hooks de React (`useState`, `useEffect`)
+- **Comunicación con API:** Fetch API para consumir endpoints del backend
+- **Renderizado:** Condicional basado en estados (cargando, error, detalle, catálogo)
+- **Funcionalidades:**
+  - Catálogo de productos con estados de carga y error
+  - Vista detallada de producto con renderizado condicional
+  - Carrito de compras manejado en estado global de `App.jsx`
+  - Formulario de contacto controlado con validación
 
-Navbar: Navegación y contador del carrito.
+### Decisiones de Arquitectura
 
-ProductList: Carga productos desde la API y maneja estados (cargando, error, éxito).
-
-ProductCard: Tarjeta individual de producto.
-
-ProductDetail: Vista detallada con botón para agregar al carrito.
-
-ContactForm: Formulario controlado con validación.
-
-Footer: Información de contacto y empresa.
-
-Características
-
-Renderizado dinámico con .map() y keys únicas.
-
-Renderizado condicional de vistas.
-
-Estado compartido entre componentes.
-
-Peticiones asíncronas con manejo de errores.
-
-Diseño responsivo.
-
-Tecnologías
-
-Backend: Node.js, Express, express.Router, middlewares personalizados.
-Frontend: React, Vite, Hooks (useState, useEffect), Fetch API.
+1. **Separación Backend/Frontend:** Permite desarrollo independiente y escalabilidad
+2. **Componentes modulares:** Facilita mantenimiento y reutilización de código
+3. **Estado centralizado en App.jsx:** Simplifica el flujo de datos entre componentes sin necesidad de librerías externas
+4. **Renderizado condicional:** Implementa navegación entre vistas sin React Router (según requisitos del proyecto)
+5. **Manejo de errores robusto:** Tanto en backend (middlewares) como frontend (estados de error)
