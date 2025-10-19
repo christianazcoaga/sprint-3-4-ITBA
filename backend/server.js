@@ -1,9 +1,14 @@
 const express = require('express');
-const cors = require('cors'); // Importa el paquete cors
+const cors = require('cors');
+require('dotenv').config();
+const connectDB = require('./config/database');
 const productosRoutes = require('./routes/productos.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Conectar a MongoDB Atlas
+connectDB();
 
 // Middleware global para logging de peticiones
 app.use((req, res, next) => {
