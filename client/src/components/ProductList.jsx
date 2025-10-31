@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
-const ProductList = ({ productos, loading, error, onProductClick }) => {
+const ProductList = ({ productos, loading, error }) => {
   if (loading) {
     return (
       <div className="loading-container">
@@ -39,7 +39,6 @@ const ProductList = ({ productos, loading, error, onProductClick }) => {
           <ProductCard
             key={producto.id}
             producto={producto}
-            onProductClick={onProductClick}
           />
         ))}
       </div>
