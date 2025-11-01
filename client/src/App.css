@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* Asegurar que todos los inputs y textareas tengan texto negro */
+input,
+textarea,
+select {
+  color: #000;
+}
+
 :root {
   --burnt-sienna: #A0522D;
   --sage-green: #87A96B;
@@ -475,6 +482,15 @@ button:hover {
   margin-bottom: 2rem;
 }
 
+.product-detail-stock {
+  background-color: var(--sage-green);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
 .product-detail-description h3,
 .product-detail-specs h3 {
   color: #2c3e50;
@@ -519,6 +535,31 @@ button:hover {
 
 .remove-from-cart-button:hover {
   background-color: #c0392b;
+}
+
+.delete-product-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+.delete-product-button:hover:not(:disabled) {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.delete-product-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Formulario de contacto */
@@ -601,6 +642,7 @@ button:hover {
   background: var(--light-grey);
   transition: all 0.3s ease;
   font-family: inherit;
+  color: #000;
 }
 
 .form-group input:focus,
@@ -988,6 +1030,7 @@ html, body, #root {
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.3s ease;
+  color: #000;
 }
 
 .form-group input:focus,
