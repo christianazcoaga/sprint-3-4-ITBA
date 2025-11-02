@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../config/api';
 
 const CrearProductoPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const CrearProductoPage = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/api/productos', {
+      const response = await fetch(`${API_URL}/productos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

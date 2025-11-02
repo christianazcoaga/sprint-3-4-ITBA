@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from '../components/ProductList';
+import API_URL from '../config/api';
 
 const ProductosPage = () => {
   const [productos, setProductos] = useState([]);
@@ -11,7 +12,7 @@ const ProductosPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('http://localhost:3000/api/productos');
+      const response = await fetch(`${API_URL}/productos`);
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }

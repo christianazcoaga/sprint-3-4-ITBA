@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductDetail from '../components/ProductDetail';
+import API_URL from '../config/api';
 
 const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`http://localhost:3000/api/productos/${id}`);
+        const response = await fetch(`${API_URL}/productos/${id}`);
         if (!response.ok) {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
@@ -49,7 +50,7 @@ const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
 
   const handleDeleteProduct = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/productos/${productId}`, {
+      const response = await fetch(`${API_URL}/productos/${productId}`, {
         method: 'DELETE'
       });
 
