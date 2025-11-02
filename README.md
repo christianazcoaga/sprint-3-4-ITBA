@@ -76,13 +76,7 @@ Crea un archivo `.env` en la carpeta `backend/` con las siguientes variables:
 PORT=3000
 
 # MongoDB Atlas Connection String
-MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/nombre-db?retryWrites=true&w=majority
-
-# Entorno
-NODE_ENV=development
-```
-
-**Nota:** Reemplaza `usuario`, `password`, `cluster` y `nombre-db` con tus credenciales de MongoDB Atlas.
+MONGODB_URI
 
 #### Obtener MongoDB URI:
 1. Ve a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
