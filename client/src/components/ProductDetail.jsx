@@ -48,7 +48,6 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, cart, onRemoveF
         
         <div className="product-detail-info">
           <h1 className="product-detail-name">{producto.nombre}</h1>
-          <p className="product-detail-category">{producto.categoria}</p>
           <div className="product-detail-price">${producto.precio}</div>
           
           <div className="product-detail-description">
@@ -59,19 +58,6 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, cart, onRemoveF
           {producto.stock !== undefined && (
             <div className="product-detail-stock">
               <strong>Stock disponible:</strong> {producto.stock} unidades
-            </div>
-          )}
-          
-          {producto.especificaciones && Object.keys(producto.especificaciones).length > 0 && (
-            <div className="product-detail-specs">
-              <h3>Especificaciones</h3>
-              <ul>
-                {Object.entries(producto.especificaciones).map(([key, value]) => (
-                  <li key={key}>
-                    <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
-                  </li>
-                ))}
-              </ul>
             </div>
           )}
           

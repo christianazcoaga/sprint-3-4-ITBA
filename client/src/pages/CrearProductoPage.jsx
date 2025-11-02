@@ -9,8 +9,7 @@ const CrearProductoPage = () => {
     descripcion: '',
     precio: '',
     stock: '',
-    imagenUrl: '',
-    categoria: ''
+    imagenUrl: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -129,17 +128,6 @@ const CrearProductoPage = () => {
               min="0"
             />
           </div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="categoria">Categoría</label>
-          <input
-            type="text"
-            id="categoria"
-            name="categoria"
-            value={formData.categoria}
-            onChange={handleChange}
-          />
         </div>
 
         <div className="form-group">

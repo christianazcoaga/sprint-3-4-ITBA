@@ -23,14 +23,6 @@ const productSchema = new mongoose.Schema({
   imagenUrl: {
     type: String,
     trim: true
-  },
-  categoria: {
-    type: String,
-    trim: true
-  },
-  especificaciones: {
-    type: Map,
-    of: String
   }
 }, {
   timestamps: true, // Agrega createdAt y updatedAt automáticamente
