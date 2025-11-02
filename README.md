@@ -1,8 +1,20 @@
 # Hermanos Jota - E-commerce de Muebles
 
-## Información del Proyecto
+Tienda online de muebles de diseño con gestión completa de productos, carrito de compras y sistema de administración.
 
-**Proyecto:** Sprint 3 y 4 - ITBA  
+---
+
+## 🌐 Sitios Desplegados
+
+- **Frontend (Vercel):** https://jota-hermanos.vercel.app
+- **Backend API (Render):** https://sprint-3-4-itba.onrender.com
+- **Base de Datos:** MongoDB Atlas
+
+---
+
+## 👥 Información del Proyecto
+
+**Proyecto:** Sprint 3, 4, 5 y 6 - ITBA  
 **Integrantes:**
 - Azcoaga, Christian
 - Bibilaqua, Matias
@@ -12,82 +24,190 @@
 
 ---
 
-## Instrucciones de Instalación
+## 🚀 Tecnologías Utilizadas
 
-### 1. Instalar dependencias del Backend
+### Backend
+- **Node.js** con **Express.js**
+- **MongoDB** con **Mongoose**
+- **CORS** para peticiones cross-origin
+- **dotenv** para variables de entorno
+
+### Frontend
+- **React 18**
+- **Vite** como bundler
+- **React Router** para navegación
+- **CSS moderno** con diseño responsivo
+
+---
+
+## 📋 Requisitos Previos
+
+- Node.js (versión 16 o superior)
+- npm o yarn
+- Cuenta en MongoDB Atlas (para base de datos)
+- Git
+
+---
+
+## ⚙️ Configuración Local
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/christianazcoaga/sprint-3-4-ITBA.git
+cd sprint-3-4-ITBA
+```
+
+### 2. Configurar Backend
+
+#### Instalar dependencias
 
 ```bash
 cd backend
 npm install
 ```
 
-### 2. Instalar dependencias del Frontend
+#### Configurar variables de entorno
+
+Crea un archivo `.env` en la carpeta `backend/` con las siguientes variables:
+
+```env
+# Puerto del servidor
+PORT=3000
+
+# MongoDB Atlas Connection String
+MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/nombre-db?retryWrites=true&w=majority
+
+# Entorno
+NODE_ENV=development
+```
+
+**Nota:** Reemplaza `usuario`, `password`, `cluster` y `nombre-db` con tus credenciales de MongoDB Atlas.
+
+#### Obtener MongoDB URI:
+1. Ve a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Crea un cluster gratuito
+3. En "Database" → "Connect" → "Connect your application"
+4. Copia la connection string y reemplaza `<password>` con tu contraseña
+
+### 3. Configurar Frontend
+
+#### Instalar dependencias
 
 ```bash
 cd client
 npm install
 ```
 
+#### Configurar variables de entorno (Opcional)
+
+Crea un archivo `.env` en la carpeta `client/` si quieres personalizar la URL de la API:
+
+```env
+# URL de la API (opcional, tiene fallback automático)
+VITE_API_URL=http://localhost:3000/api
+```
+
+**Nota:** Si no creas este archivo, la aplicación usará automáticamente `http://localhost:3000/api` en desarrollo.
+
 ---
 
-## Instrucciones de Ejecución
+## 🏃 Ejecutar el Proyecto Localmente
 
-### Iniciar el Backend (API)
+### Opción 1: Ejecutar Backend y Frontend por separado
+
+#### Iniciar el Backend
 
 ```bash
 cd backend
-npm run dev
+npm start
 ```
 
 El servidor estará disponible en: **http://localhost:3000**
 
-### Iniciar el Frontend (React)
+#### Iniciar el Frontend (en otra terminal)
 
 ```bash
 cd client
 npm run dev
 ```
 
-La aplicación estará disponible en: **http://localhost:5173**
 
-> **Nota:** Es necesario ejecutar ambos servidores simultáneamente en terminales separadas.
+La aplicación estará disponible en: **http://localhost:5173**
 
 ---
 
-## Arquitectura del Proyecto
+## 📡 API Endpoints
 
-### Backend (API REST con Express)
+### Productos
 
-- **Servidor:** Express.js corriendo en el puerto 3000
-- **Fuente de datos:** Array de productos en archivo local (`productos.js`)
-- **Rutas modulares:** Organizadas con `express.Router` en carpeta `routes/`
-- **Middlewares:**
-  - Logging de peticiones (método y URL)
-  - `express.json()` para parsear JSON
-  - CORS habilitado para comunicación con frontend
-  - Manejador de errores centralizado (404 y 500)
+- `GET /api/productos` - Obtener todos los productos
+- `GET /api/productos/:id` - Obtener un producto por ID
+- `POST /api/productos` - Crear un nuevo producto
+- `PUT /api/productos/:id` - Actualizar un producto
+- `DELETE /api/productos/:id` - Eliminar un producto
 
-**Endpoints disponibles:**
-- `GET /api/productos` - Obtiene todos los productos
-- `GET /api/productos/:id` - Obtiene un producto específico por ID
+---
 
-### Frontend (Single Page Application con React)
+## 🔧 Scripts Disponibles
 
-- **Framework:** React con Vite como build tool
-- **Arquitectura de componentes:** Componentes reutilizables (`Navbar`, `Footer`, `ProductList`, `ProductCard`, `ProductDetail`, `ContactForm`)
-- **Manejo de estado:** Hooks de React (`useState`, `useEffect`)
-- **Comunicación con API:** Fetch API para consumir endpoints del backend
-- **Renderizado:** Condicional basado en estados (cargando, error, detalle, catálogo)
-- **Funcionalidades:**
-  - Catálogo de productos con estados de carga y error
-  - Vista detallada de producto con renderizado condicional
-  - Carrito de compras manejado en estado global de `App.jsx`
-  - Formulario de contacto controlado con validación
+### Backend
 
-### Decisiones de Arquitectura
+```bash
+npm start          # Inicia el servidor en modo producción
+npm run dev        # Inicia el servidor con nodemon (desarrollo)
+```
 
-1. **Separación Backend/Frontend:** Permite desarrollo independiente y escalabilidad
-2. **Componentes modulares:** Facilita mantenimiento y reutilización de código
-3. **Estado centralizado en App.jsx:** Simplifica el flujo de datos entre componentes sin necesidad de librerías externas
-4. **Renderizado condicional:** Implementa navegación entre vistas sin React Router (según requisitos del proyecto)
-5. **Manejo de errores robusto:** Tanto en backend (middlewares) como frontend (estados de error)
+### Frontend
+
+```bash
+npm run dev        # Inicia el servidor de desarrollo con Vite
+npm run build      # Construye la aplicación para producción
+npm run preview    # Previsualiza la build de producción
+```
+
+---
+
+## 🌍 Deployment
+
+### Backend (Render)
+
+1. Conecta tu repositorio de GitHub a Render
+2. Configura las variables de entorno en Render:
+   - `MONGODB_URI`
+   - `NODE_ENV=production`
+   - `PORT` (Render lo asigna automáticamente)
+3. Root Directory: `backend`
+4. Build Command: `npm install`
+5. Start Command: `npm start`
+
+### Frontend (Vercel)
+
+1. Importa el proyecto desde GitHub
+2. Framework Preset: **Vite**
+3. Root Directory: `client`
+4. Build Command: `npm run build` o `vite build`
+5. Output Directory: `dist`
+6. Variables de entorno (opcional):
+   - `VITE_API_URL=https://sprint-3-4-itba.onrender.com/api`
+
+
+---
+
+## 📝 Variables de Entorno Necesarias
+
+### Backend (.env)
+
+```env
+PORT=3000
+MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/database
+NODE_ENV=development
+```
+
+### Frontend (.env) - Opcional
+
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+---
