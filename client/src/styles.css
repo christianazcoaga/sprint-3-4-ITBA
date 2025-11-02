@@ -1,0 +1,249 @@
+/* Hermanos Jota — Professional theme (compact)
+   Basado en el manual de marca pero afinado para un look más profesional:
+   - Tipografía refinada
+   - Espaciados más sobrios
+   - Paleta cálida y contrastes adecuados
+   - Componentes (hero, features, CTA, cards) con apariencia moderna
+*/
+
+:root {
+  --burnt-sienna: #a0522d;
+  --sage-green: #87a96b;
+  --warm-alabaster: #f5e6d3;
+  --goldenrod: #d4a437;
+  --dark-wood: #3e2723;
+  --muted: #6b6b6b;
+  --bg: #fbf7f2;
+  --card: #ffffff;
+  --radius: 12px;
+  --shadow: 0 6px 24px rgba(62, 39, 35, 0.08);
+}
+
+/* Base */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--dark-wood);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  margin: 0 0 0.5rem 0;
+  color: var(--dark-wood);
+}
+h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+h2 {
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+p {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+/* Header / Nav general utility */
+.header,
+.navbar {
+  background: transparent;
+}
+
+/* Hero refinado */
+.hero {
+  padding: 4rem 0;
+  /* fondo sólido en lugar de degradado para un aspecto más profesional */
+  background: var(--warm-alabaster);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero h1 {
+  color: var(--burnt-sienna);
+  font-size: 2.8rem;
+}
+.hero p.subtitle {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+/* CTA */
+.cta-button {
+  display: inline-block;
+  padding: 0.9rem 1.6rem;
+  border-radius: 10px;
+  /* color sólido en lugar de degradado */
+  background: var(--burnt-sienna);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(160, 82, 45, 0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background-color 0.12s ease;
+}
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(160, 82, 45, 0.18);
+  background-color: #8b3f23;
+}
+
+/* Features grid (cards) */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.feature {
+  background: var(--card);
+  padding: 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(62, 39, 35, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.feature h3 {
+  font-size: 1.05rem;
+  color: var(--dark-wood);
+}
+.feature p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Product grid and cards (generic) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  /* Make rows distribute evenly so cards in the same row match height */
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+.product-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(62, 39, 35, 0.04);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  /* ensure the card stretches to fill the grid row */
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(62, 39, 35, 0.12);
+}
+.product-image {
+  height: 240px;
+  background: var(--warm-alabaster);
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.product-info {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  /* let info take remaining vertical space so cards align */
+  flex: 1 1 auto;
+  justify-content: space-between;
+}
+.product-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: var(--dark-wood);
+  text-transform: none;
+}
+.product-price {
+  color: var(--burnt-sienna);
+  font-weight: 700;
+}
+
+/* Footer */
+.footer {
+  margin-top: 3rem;
+  padding: 3rem 0;
+  background: var(--dark-wood);
+  color: var(--warm-alabaster);
+  border-radius: 10px;
+}
+
+/* Utilities */
+.text-muted {
+  color: var(--muted);
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small helpers for icons and fallbacks */
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--warm-alabaster);
+}
+.cart-icon-svg {
+  display: block;
+  color: var(--warm-alabaster);
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.product-image-fallback .fallback-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: var(--light-grey);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}

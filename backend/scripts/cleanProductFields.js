@@ -36,7 +36,7 @@ const cleanProductFields = async () => {
       }
     );
     
-    console.log(`✅ Limpieza completada!`);
+  console.log('Limpieza completada.');
     console.log(`Documentos modificados: ${result.modifiedCount}`);
     console.log(`Documentos encontrados: ${result.matchedCount}`);
     
@@ -48,7 +48,7 @@ const cleanProductFields = async () => {
     });
     
   } catch (error) {
-    console.error('❌ Error durante la limpieza:', error);
+    console.error('Error durante la limpieza:', error);
   } finally {
     // Cerrar la conexión
     await mongoose.connection.close();

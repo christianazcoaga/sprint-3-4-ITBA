@@ -29,7 +29,7 @@ const checkDatabase = async () => {
     // Verificar cada colección
     for (const collection of collections) {
       const count = await conn.connection.db.collection(collection.name).countDocuments();
-      console.log(`\n📦 Colección: ${collection.name}`);
+  console.log(`\nColección: ${collection.name}`);
       console.log(`   Documentos: ${count}`);
       
       if (count > 0) {
@@ -60,10 +60,10 @@ const checkDatabase = async () => {
     }
     
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('Error:', error);
   } finally {
     await mongoose.connection.close();
-    console.log('\n✅ Conexión cerrada');
+    console.log('\nConexión cerrada');
     process.exit(0);
   }
 };
