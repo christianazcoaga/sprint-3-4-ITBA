@@ -1,6 +1,12 @@
 import React from 'react';
 
-const ProductImage = ({ src, alt, className = '', fallbackText = 'Imagen no disponible' }) => {
+const ProductImage = ({ 
+  src, 
+  alt, 
+  className = '', 
+  fallbackText = 'Imagen no disponible',
+  priority = false 
+}) => {
   const handleError = (e) => {
     e.target.style.display = 'none';
     e.target.nextSibling.style.display = 'flex';
@@ -13,6 +19,8 @@ const ProductImage = ({ src, alt, className = '', fallbackText = 'Imagen no disp
         alt={alt}
         onError={handleError}
         className="product-image"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
       />
       <div className="product-image-fallback" style={{ display: 'none' }}>
         <div className="fallback-content">

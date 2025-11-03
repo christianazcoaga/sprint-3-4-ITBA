@@ -35,10 +35,11 @@ const ProductList = ({ productos, loading, error }) => {
     <div className="product-list">
       <h2>Nuestros Productos</h2>
       <div className="product-grid">
-        {productos.map((producto) => (
+        {productos.map((producto, index) => (
           <ProductCard
             key={producto.id}
             producto={producto}
+            priority={index < 3}
           />
         ))}
       </div>

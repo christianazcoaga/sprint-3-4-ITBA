@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ProductList from '../components/ProductList';
 import API_URL from '../config/api';
 
@@ -6,6 +6,7 @@ const ProductosPage = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const hasFetched = useRef(false);
 
   // Función para cargar productos desde la API
   const fetchProductos = async () => {
@@ -25,9 +26,12 @@ const ProductosPage = () => {
     }
   };
 
-  // Cargar productos al montar el componente
+  // Cargar productos al montar el componente (evita doble fetch en StrictMode)
   useEffect(() => {
-    fetchProductos();
+    if (!hasFetched.current) {
+      hasFetched.current = true;
+      fetchProductos();
+    }
   }, []);
 
   return (
