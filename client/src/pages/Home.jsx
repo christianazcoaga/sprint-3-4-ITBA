@@ -15,15 +15,15 @@ const Home = () => {
       
       <section className="features">
         <div className="feature">
-          <h3>🌿 Sostenible</h3>
+          <h3>Sostenible</h3>
           <p>Materiales certificados FSC® y acabados ecológicos</p>
         </div>
         <div className="feature">
-          <h3>✨ Diseño Atemporal</h3>
+          <h3>Diseño Atemporal</h3>
           <p>Piezas que combinan funcionalidad y elegancia</p>
         </div>
         <div className="feature">
-          <h3>🛠️ Artesanal</h3>
+          <h3>Artesanal</h3>
           <p>Elaborado con técnicas tradicionales y modernas</p>
         </div>
       </section>

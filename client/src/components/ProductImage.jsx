@@ -16,7 +16,7 @@ const ProductImage = ({ src, alt, className = '', fallbackText = 'Imagen no disp
       />
       <div className="product-image-fallback" style={{ display: 'none' }}>
         <div className="fallback-content">
-          <div className="fallback-icon">🪑</div>
+          <div className="fallback-icon" aria-hidden="true"></div>
           <div className="fallback-text">{fallbackText}</div>
         </div>
       </div>
