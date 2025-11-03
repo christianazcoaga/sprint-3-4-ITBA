@@ -247,3 +247,25 @@ p {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
+/* --- Animación para el Carrito --- */
+
+/* Define la animación de "salto" o "pulso" */
+@keyframes cart-bump-animation {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.4); /* Salto grande */
+  }
+  50% {
+    transform: scale(1.1); /* Rebote */
+  }
+  100% {
+    transform: scale(1); /* Vuelta a la normalidad */
+  }
+}
+
+/* La clase que se aplica al ícono del carrito */
+.cart-icon.cart-bump {
+  animation: cart-bump-animation 0.5s ease-out;
+}
