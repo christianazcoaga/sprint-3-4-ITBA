@@ -5,11 +5,18 @@
   box-sizing: border-box;
 }
 
+/* Asegurar que las imágenes sean responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Asegurar que todos los inputs y textareas tengan texto negro */
 input,
 textarea,
 select {
   color: #000;
+  max-width: 100%;
 }
 
 :root {
@@ -70,13 +77,23 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Asegura que el color del texto también tenga una transición suave */
+  transition: background-color 0.3s, color 0.3s;
+  /* Mejoras para dispositivos táctiles */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px; /* Tamaño mínimo recomendado para toque */
 }
 
 button:hover {
   background-color: var(--sage-green);
-  color: var(--dark-wood); /* Cambia el color del texto para que contraste con el fondo */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Asegura que la animación sea suave */
+  color: var(--dark-wood);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mejoras de accesibilidad para touch */
+a, button, .navbar-link, .cart-icon {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* Ensure the body and root use flexbox layout */
@@ -96,10 +113,12 @@ button:hover {
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .navbar-logo-container {
@@ -149,7 +168,54 @@ button:hover {
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Hamburger menu button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1000;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--warm-alabaster);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Menu overlay */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  backdrop-filter: blur(2px);
 }
 
 .navbar-link {
@@ -157,8 +223,13 @@ button:hover {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--warm-alabaster);
+  color: white;
   transition: color 0.3s;
+  text-decoration: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
 }
 
 .navbar-link:hover {
@@ -245,12 +316,16 @@ button:hover {
 .product-list h2 {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--dark-wood);
+  color: white;
   font-size: 2.5rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   position: relative;
+  background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
 .product-list h2::after {
@@ -272,9 +347,10 @@ button:hover {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 3rem;
+  padding: 0 1rem;
 }
 
 /* Tarjeta de producto */
@@ -287,6 +363,7 @@ button:hover {
   cursor: pointer;
   border: 1px solid var(--warm-alabaster);
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .product-card::before {
@@ -299,7 +376,8 @@ button:hover {
   background: linear-gradient(90deg, var(--burnt-sienna), var(--sage-green), var(--dusty-rose));
 }
 
-.product-card:hover {
+.product-card:hover,
+.product-card:active {
   transform: translateY(-8px);
   box-shadow: 0 8px 30px rgba(62, 39, 35, 0.15);
   border-color: var(--goldenrod);
@@ -587,13 +665,20 @@ button:hover {
 
 .contact-form-container h2 {
   text-align: center;
-  color: var(--dark-wood);
+  color: white;
   margin-bottom: 3rem;
   font-size: 2.5rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   position: relative;
+  background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-left: -3rem;
+  margin-right: -3rem;
+  margin-top: -3rem;
+  margin-bottom: 3rem;
 }
 
 .contact-form-container h2::after {
@@ -715,10 +800,10 @@ button:hover {
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
 }
 
 .footer-section h3,
@@ -859,28 +944,501 @@ button:hover {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .product-detail-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
+
+/* Tablets en modo landscape */
+@media (max-width: 1200px) {
   .navbar-container {
-    flex-direction: column;
-    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+}
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+
+  .navbar-menu {
+    gap: 1.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .contact-form-container {
+    padding: 2.5rem;
+  }
+}
+
+/* Móviles y pantallas pequeñas */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Navbar responsive */
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0 1rem;
+  }
+
+  /* Mostrar hamburger menu */
+  .hamburger {
+    display: flex;
+    order: 3;
+  }
+
+  /* Mostrar overlay cuando el menú está activo */
+  .menu-overlay {
+    display: block;
   }
   
   .navbar-menu {
-    gap: 1rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .navbar-menu.active {
+    right: 0;
+  }
+
+  .navbar-link {
+    padding: 0.75rem 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(245, 230, 211, 0.2);
+  }
+
+  .cart-icon {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .cart-count {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
   }
   
   .navbar-logo-container {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    gap: 0.75rem;
+    order: 1;
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-logo-img {
+    width: 40px;
+    height: 40px;
   }
   
   .navbar-logo-text {
+    font-size: 1.2rem;
+  }
+
+  /* Product grid responsive */
+  .product-list {
+    padding: 0 0.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .product-list h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .product-card {
+    border-radius: 8px;
+  }
+
+  .product-image-container {
+    height: 180px;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-name {
+    font-size: 1.2rem;
+  }
+
+  .product-category {
+    font-size: 0.85rem;
+  }
+
+  .product-description {
+    font-size: 0.9rem;
+  }
+
+  .product-price {
     font-size: 1.4rem;
+    padding: 0.6rem;
+  }
+
+  /* Product detail responsive */
+  .product-detail-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .product-detail-image .detail-image {
+    height: 300px;
+  }
+
+  .product-detail-name {
+    font-size: 1.6rem;
+  }
+
+  .product-detail-price {
+    font-size: 1.6rem;
+  }
+
+  .add-to-cart-button,
+  .remove-from-cart-button,
+  .delete-product-button {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Hero section responsive */
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Features responsive */
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature {
+    padding: 1.5rem;
+  }
+
+  .feature h3 {
+    font-size: 1.3rem;
+  }
+
+  /* Contact form responsive */
+  .contact-form-container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .contact-form-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-top: -2rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .submit-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Crear producto form responsive */
+  .crear-producto-page {
+    padding: 1rem;
+  }
+
+  .product-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .submit-button,
+  .cancel-button {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+  }
+
+  /* Footer responsive */
+  .footer {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-section p {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* App container responsive */
+  .app-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .content-wrapper {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Navbar para móviles pequeños */
+  .navbar-menu {
+    width: 80%;
+    max-width: 250px;
+    padding: 4rem 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+  }
+
+  .navbar-logo-text {
+    font-size: 1rem;
+  }
+
+  .navbar-logo,
+  .navbar-logo-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Product grid para móviles pequeños */
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-list h2 {
+    font-size: 1.5rem;
+    padding: 1.2rem 0.8rem;
+  }
+
+  .product-image-container {
+    height: 200px;
+  }
+
+  .product-info {
+    padding: 1.25rem;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+  }
+
+  /* Hero para móviles pequeños */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Contact form para móviles pequeños */
+  .contact-form-container {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .contact-form-container h2 {
+    font-size: 1.5rem;
+    padding: 1.2rem 0.8rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: -1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Product detail para móviles pequeños */
+  .product-detail-content {
+    padding: 1rem;
+  }
+
+  .product-detail-image .detail-image {
+    height: 250px;
+  }
+
+  .product-detail-name {
+    font-size: 1.4rem;
+  }
+
+  .product-detail-price {
+    font-size: 1.4rem;
+  }
+
+  /* Footer para móviles pequeños */
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+
+  .footer-section p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1400px) {
+  .navbar-container,
+  .content-wrapper,
+  .footer-container {
+    max-width: 1400px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
   }
 }
 
@@ -888,6 +1446,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 html, body, #root {
@@ -901,16 +1460,7 @@ html, body, #root {
   display: block;
 }
 
-.navbar-link {
-  text-decoration: none;
-  color: var(--dark-wood);
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar-link:hover {
-  color: var(--burnt-sienna);
-}
+/* Estilos para React Router Links ya están definidos arriba en la sección del navbar */
 
 /* Home Page */
 .home-page {
@@ -1001,6 +1551,11 @@ html, body, #root {
 .crear-producto-page h2 {
   margin-bottom: 2rem;
   text-align: center;
+  color: white;
+  background: linear-gradient(135deg, var(--dark-wood) 0%, var(--burnt-sienna) 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
 .product-form {
@@ -1109,8 +1664,12 @@ html, body, #root {
 
 /* Responsive para nuevas páginas */
 @media (max-width: 768px) {
+  .home-page {
+    padding: 1rem;
+  }
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   
   .features {
@@ -1128,5 +1687,33 @@ html, body, #root {
   .submit-button,
   .cancel-button {
     width: 100%;
+  }
+
+  .crear-producto-page h2 {
+    font-size: 1.6rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .feature h3 {
+    font-size: 1.2rem;
+  }
+
+  .crear-producto-page h2 {
+    font-size: 1.4rem;
+    padding: 1.2rem 0.8rem;
   }
 }
