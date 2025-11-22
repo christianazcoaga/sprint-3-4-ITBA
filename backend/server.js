@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const connectDB = require('./config/database');
 const productosRoutes = require('./routes/productos.js');
+const userRoutes = require('./routes/users.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +25,9 @@ app.use(express.json());
 
 // Rutas de productos
 app.use('/api/productos', productosRoutes);
+
+// Rutas de usuarios
+app.use('/api/users', userRoutes);
 
 // Manejador para rutas no encontradas (404)
 app.use('*', (req, res) => {
