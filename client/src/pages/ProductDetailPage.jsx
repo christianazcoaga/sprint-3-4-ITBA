@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useToast } from '../context/ToastContext';
 import ProductDetail from '../components/ProductDetail';
 import API_URL from '../config/api';
 
 const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -60,10 +62,10 @@ const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
       }
 
       // Producto eliminado exitosamente
-      alert('Producto eliminado exitosamente');
+      showToast('Producto eliminado exitosamente', 'success');
       navigate('/productos');
     } catch (err) {
-      alert(`Error al eliminar el producto: ${err.message}`);
+      showToast(`Error al eliminar el producto: ${err.message}`, 'error');
     }
   };
 

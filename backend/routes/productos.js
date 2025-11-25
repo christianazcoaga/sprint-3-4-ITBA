@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/Product');
+const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -48,8 +49,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/productos - Crear un nuevo producto
-router.post('/', async (req, res) => {
+// POST /api/productos - Crear un nuevo producto (requiere autenticación)
+router.post('/', authenticateToken, async (req, res) => {
   try {
     const { nombre, descripcion, precio, stock, imagenUrl, categoria, especificaciones } = req.body;
     
@@ -97,8 +98,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/productos/:id - Actualizar un producto existente
-router.put('/:id', async (req, res) => {
+// PUT /api/productos/:id - Actualizar un producto existente (requiere autenticación)
+router.put('/:id', authenticateToken, async (req, res) => {
   try {
     const { nombre, descripcion, precio, stock, imagenUrl, categoria, especificaciones } = req.body;
     
@@ -156,8 +157,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/productos/:id - Eliminar un producto
-router.delete('/:id', async (req, res) => {
+// DELETE /api/productos/:id - Eliminar un producto (requiere autenticación)
+router.delete('/:id', authenticateToken, async (req, res) => {
   try {
     const productoEliminado = await Product.findByIdAndDelete(req.params.id);
     

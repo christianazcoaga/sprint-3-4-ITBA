@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import logo from '../assets/logo.svg';
 
 const Navbar = ({ cartCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const prevCartCountRef = useRef(cartCount);
+  const { user, logout } = useAuth();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,6 +18,13 @@ const Navbar = ({ cartCount }) => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    navigate('/');
+    showToast('Sesión cerrada correctamente', 'success');
   };
 
   // Cerrar el menú cuando se hace clic fuera de él
@@ -75,6 +87,20 @@ const Navbar = ({ cartCount }) => {
           <Link to="/productos" className="navbar-link" onClick={closeMenu}>Catálogo</Link>
           <Link to="/contacto" className="navbar-link" onClick={closeMenu}>Contacto</Link>
           <Link to="/admin/crear-producto" className="navbar-link" onClick={closeMenu}>Crear Producto</Link>
+          
+          {user ? (
+            <div className="navbar-auth">
+              <span className="navbar-user">Hola, {user.username}</span>
+              <button onClick={handleLogout} className="navbar-link navbar-logout-btn">
+                Cerrar Sesión
+              </button>
+            </div>
+          ) : (
+            <div className="navbar-auth">
+              <Link to="/login" className="navbar-link" onClick={closeMenu}>Iniciar Sesión</Link>
+              <Link to="/registro" className="navbar-link navbar-register-btn" onClick={closeMenu}>Registrarse</Link>
+            </div>
+          )}
           
           <div 
             className={`cart-icon ${isAnimating ? 'cart-bump' : ''}`} 
