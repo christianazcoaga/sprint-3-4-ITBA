@@ -619,3 +619,210 @@ p {
     font-size: 0.9rem;
   }
 }
+/* --- Estilos PerfilPage --- */
+.perfil-page {
+  padding: 2rem 1rem;
+}
+
+.perfil-titulo {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--burnt-sienna);
+}
+
+.perfil-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.perfil-sidebar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.perfil-user-card {
+  padding: 2rem;
+  text-align: center;
+  background: var(--warm-alabaster);
+}
+
+.perfil-avatar {
+  width: 80px;
+  height: 80px;
+  background: var(--burnt-sienna);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 auto 1rem;
+}
+
+.perfil-rol {
+  color: var(--sage-green);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.perfil-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.perfil-nav button {
+  background: none;
+  border: none;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s;
+  color: var(--dark-wood);
+}
+
+.perfil-nav button:hover {
+  background: #fafafa;
+  color: var(--burnt-sienna);
+}
+
+.perfil-nav button.active {
+  background: white;
+  border-left: 4px solid var(--burnt-sienna);
+  font-weight: 600;
+  color: var(--burnt-sienna);
+}
+
+/* Content Area */
+.perfil-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  min-height: 400px;
+}
+
+.perfil-section h2 {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--warm-alabaster);
+  padding-bottom: 0.5rem;
+  color: var(--dark-wood);
+}
+
+.input-disabled {
+  background-color: #f5f5f5;
+  color: #888;
+  border-color: #ddd;
+}
+
+/* Tarjetas de Pago */
+.tarjeta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-icono {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.tarjeta-info p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.tarjeta-exp {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.add-card-btn {
+  background: transparent;
+  border: 2px dashed #ccc;
+  color: #666;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.add-card-btn:hover {
+  border-color: var(--burnt-sienna);
+  color: var(--burnt-sienna);
+}
+
+/* Pedidos */
+.pedido-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pedido-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pedido-id {
+  font-weight: bold;
+}
+
+.pedido-estado {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.estado-entregado { background: #d4edda; color: #155724; }
+.estado-en-camino { background: #Tm; color: #856404; }
+.estado-procesando { background: #e2e3e5; color: #383d41; }
+
+.pedido-total {
+  font-weight: bold;
+  color: var(--burnt-sienna);
+}
+
+.btn-small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  background: var(--dark-wood);
+  color: white;
+}
+.btn-small.danger {
+  background: #dc3545;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .perfil-layout {
+    grid-template-columns: 1fr;
+  }
+  .perfil-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .perfil-nav button {
+    border-bottom: none;
+    white-space: nowrap;
+  }
+  .perfil-nav button.active {
+    border-left: none;
+    border-bottom: 4px solid var(--burnt-sienna);
+  }
+}
