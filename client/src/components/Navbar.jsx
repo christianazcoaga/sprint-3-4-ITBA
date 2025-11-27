@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import logo from '../assets/logo.svg';
 
-const Navbar = ({ cartCount }) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
   const prevCartCountRef = useRef(cartCount);
   const { user, logout } = useAuth();
   const { showToast } = useToast();
@@ -86,34 +89,37 @@ const Navbar = ({ cartCount }) => {
           <Link to="/" className="navbar-link" onClick={closeMenu}>Inicio</Link>
           <Link to="/productos" className="navbar-link" onClick={closeMenu}>Catálogo</Link>
           <Link to="/contacto" className="navbar-link" onClick={closeMenu}>Contacto</Link>
-          <Link to="/admin/crear-producto" className="navbar-link" onClick={closeMenu}>Crear Producto</Link>
           
           {user ? (
-            <div className="navbar-auth">
+            <>
+              <Link to="/profile" className="navbar-link" onClick={closeMenu}>Mi Perfil</Link>
+              <Link to="/mis-pedidos" className="navbar-link" onClick={closeMenu}>Mis Pedidos</Link>
+              {user.rol === 'Admin' && (
+                <Link to="/admin/crear-producto" className="navbar-link" onClick={closeMenu}>Crear Producto</Link>
+              )}
               <span className="navbar-user">Hola, {user.username}</span>
               <button onClick={handleLogout} className="navbar-link navbar-logout-btn">
                 Cerrar Sesión
               </button>
-              <Link to="/profile" className="navbar-link" onClick={closeMenu}>Mi perfil</Link>
-            </div>
+            </>
           ) : (
-            <div className="navbar-auth">
+            <>
               <Link to="/login" className="navbar-link navbar-login-btn" onClick={closeMenu}>Iniciar Sesión</Link>
               <Link to="/registro" className="navbar-link navbar-register-btn" onClick={closeMenu}>Registrarse</Link>
-            </div>
+            </>
           )}
           
-          <div 
-            className={`cart-icon ${isAnimating ? 'cart-bump' : ''}`} 
+          <Link 
+            to="/carrito"
+            className={`cart-icon ${isAnimating ? 'cart-bump' : ''}`}
             aria-label="Carrito de compras"
+            onClick={closeMenu}
           >
-            <svg className="cart-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M6 6H4V4h2v2zm0 0h14l-1.2 6.8A2 2 0 0 1 16.9 16H8.1a2 2 0 0 1-1.9-1.2L5 6z" fill="currentColor" />
-              <circle cx="10" cy="20" r="1" fill="currentColor" />
-              <circle cx="18" cy="20" r="1" fill="currentColor" />
+            <svg className="cart-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="currentColor" />
             </svg>
-            <span className="cart-count">{cartCount}</span>
-          </div>
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </Link>
         </div>
       </div>
     </nav>

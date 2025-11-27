@@ -4,6 +4,7 @@ require('dotenv').config();
 const connectDB = require('./config/database');
 const productosRoutes = require('./routes/productos.js');
 const userRoutes = require('./routes/users.js');
+const orderRoutes = require('./routes/orders.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,9 @@ app.use('/api/productos', productosRoutes);
 
 // Rutas de usuarios
 app.use('/api/users', userRoutes);
+
+// Rutas de pedidos
+app.use('/api/orders', orderRoutes);
 
 // Manejador para rutas no encontradas (404)
 app.use('*', (req, res) => {

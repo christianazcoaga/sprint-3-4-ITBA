@@ -12,12 +12,17 @@ const MisPedidosPage = () => {
 
   useEffect(() => {
     const fetchPedidos = async () => {
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         const response = await fetch(`${API_URL}/orders`, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`, // Enviamos el token para identificarnos
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
@@ -28,16 +33,16 @@ const MisPedidosPage = () => {
 
         const data = await response.json();
         setPedidos(data);
+        setError(null);
       } catch (err) {
+        console.error('Error al cargar pedidos:', err);
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    if (token) {
-      fetchPedidos();
-    }
+    fetchPedidos();
   }, [token]);
 
   // Función auxiliar para formatear fecha
@@ -50,26 +55,32 @@ const MisPedidosPage = () => {
   };
 
   // Renderizado de carga
-  if (loading) return (
-    <div className="container" style={{ padding: '4rem', textAlign: 'center' }}>
-      <div className="loading-spinner"></div>
-      <p>Cargando tus pedidos...</p>
-    </div>
-  );
+  if (loading) {
+    return (
+      <div className="container" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
+        <div className="loading-spinner"></div>
+        <p>Cargando tus pedidos...</p>
+      </div>
+    );
+  }
 
   // Renderizado de error
-  if (error) return (
-    <div className="container" style={{ padding: '4rem', textAlign: 'center', color: 'red' }}>
-      <p>Error: {error}</p>
-      <Link to="/perfil">Volver</Link>
-    </div>
-  );
+  if (error) {
+    return (
+      <div className="container" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
+        <div style={{ color: '#d32f2f', marginBottom: '1rem' }}>
+          <p>Error: {error}</p>
+        </div>
+        <Link to="/productos" className="cta-button">Volver a Productos</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div style={{ marginBottom: '2rem' }}>
-        <Link to="/perfil" style={{ color: '#a0522d', textDecoration: 'none', fontWeight: '500' }}>
-          ← Volver al Perfil
+        <Link to="/" style={{ color: '#a0522d', textDecoration: 'none', fontWeight: '500' }}>
+          ← Volver al Inicio
         </Link>
       </div>
 
@@ -78,11 +89,13 @@ const MisPedidosPage = () => {
       <div className="pedidos-list">
         {pedidos.length > 0 ? (
           pedidos.map(pedido => (
-            <div key={pedido._id} className="pedido-card">
+            <div key={pedido._id || pedido.id} className="pedido-card">
               <div className="pedido-header">
-                <span className="pedido-id">ID: {pedido._id.slice(-6).toUpperCase()}</span>
-                <span className={`pedido-estado estado-${pedido.estado?.toLowerCase().replace(' ', '-') || 'procesando'}`}>
-                  {pedido.estado}
+                <span className="pedido-id">
+                  Pedido #{(pedido._id || pedido.id).slice(-6).toUpperCase()}
+                </span>
+                <span className={`pedido-estado estado-${(pedido.estado || 'Pendiente').toLowerCase().replace(' ', '-')}`}>
+                  {pedido.estado || 'Pendiente'}
                 </span>
               </div>
               <div className="pedido-body">
@@ -91,7 +104,7 @@ const MisPedidosPage = () => {
                 <div className="pedido-items-preview">
                   {pedido.items?.map((item, idx) => (
                     <small key={idx} style={{ display: 'block', color: '#666' }}>
-                      • {item.nombre} (x{item.cantidad})
+                      • {item.nombre} (x{item.cantidad}) - ${item.precio.toLocaleString()}
                     </small>
                   ))}
                 </div>

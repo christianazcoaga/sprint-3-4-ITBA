@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Importar contexto
 import { AuthProvider } from './context/AuthContext';
-import { ToastProvider, useToast } from './context/ToastContext';
+import { ToastProvider } from './context/ToastContext';
+import { CartProvider } from './context/CartContext';
 
 // Importar componentes
 import Navbar from './components/Navbar';
@@ -22,42 +22,22 @@ import RegistroPage from './pages/RegistroPage';
 import LoginPage from './pages/LoginPage';
 import PerfilPage from './pages/PerfilPage';
 import MisPedidosPage from './pages/MisPedidosPage';
+import CarritoPage from './pages/CarritoPage';
 
 function AppContent() {
-  const { showToast } = useToast();
-  const [cart, setCart] = useState([]);
-
-  const handleAddToCart = (producto) => {
-    setCart((prevCart) => [...prevCart, producto]);
-    showToast(`${producto.nombre} añadido al carrito`, 'success');
-  };
-
-  const handleRemoveFromCart = (productoId) => {
-    setCart((prevCart) => prevCart.filter(p => p.id !== productoId));
-    showToast('Producto eliminado del carrito', 'info');
-  };
-
   return (
     <div className="App">
       <Toast />
-      <Navbar cartCount={cart.length} />
+      <Navbar />
       
       <div className="app-container">
         <div className="content-wrapper">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/productos" element={<ProductosPage />} />
-            <Route 
-              path="/productos/:id" 
-              element={
-                <ProductDetailPage 
-                  cart={cart}
-                  onAddToCart={handleAddToCart}
-                  onRemoveFromCart={handleRemoveFromCart}
-                />
-              } 
-            />
+            <Route path="/productos/:id" element={<ProductDetailPage />} />
             <Route path="/contacto" element={<ContactoPage />} />
+            <Route path="/carrito" element={<CarritoPage />} />
             <Route 
               path="/admin/crear-producto" 
               element={
@@ -83,9 +63,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <ToastProvider>
-          <AppContent />
-        </ToastProvider>
+        <CartProvider>
+          <ToastProvider>
+            <AppContent />
+          </ToastProvider>
+        </CartProvider>
       </AuthProvider>
     </Router>
   );

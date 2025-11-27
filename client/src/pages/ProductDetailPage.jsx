@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
+import { useCart } from '../context/CartContext';
 import ProductDetail from '../components/ProductDetail';
 import API_URL from '../config/api';
 
-const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
+const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { showToast } = useToast();
+  const { addToCart, removeFromCart, isInCart, getProductQuantity } = useCart();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -69,6 +71,16 @@ const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
     }
   };
 
+  const handleAddToCart = (producto, cantidad = 1) => {
+    addToCart(producto, cantidad);
+    showToast(`${producto.nombre} añadido al carrito`, 'success');
+  };
+
+  const handleRemoveFromCart = (productoId) => {
+    removeFromCart(productoId);
+    showToast('Producto eliminado del carrito', 'info');
+  };
+
   if (loading) {
     return (
       <div ref={topRef} className="loading-container">
@@ -93,10 +105,11 @@ const ProductDetailPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
       <ProductDetail
         producto={producto}
         onBackToCatalog={handleBackToCatalog}
-        cart={cart}
-        onAddToCart={onAddToCart}
-        onRemoveFromCart={onRemoveFromCart}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
         onDeleteProduct={handleDeleteProduct}
+        isInCart={isInCart}
+        getProductQuantity={getProductQuantity}
       />
     </div>
   );
