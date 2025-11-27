@@ -1,6 +1,6 @@
 const express = require('express');
 const Product = require('../models/Product');
-const { authenticateToken } = require('../middleware/auth');
+const { authenticateToken, isAdmin } = require('../middleware/auth');
 
 // importar las funciones del controlador
 const {
@@ -17,12 +17,12 @@ router.get('/', getAllProducts);
 router.get('/:id', getProductById);
 
 // POST /api/productos - Crear un nuevo producto (requiere autenticación)
-router.post('/', authenticateToken, createProduct);
+router.post('/', authenticateToken, isAdmin, createProduct);
 
 // PUT /api/productos/:id - Actualizar un producto existente (requiere autenticación)
-router.put('/:id', authenticateToken, updateProduct);
+router.put('/:id', authenticateToken, isAdmin, updateProduct);
 
 // DELETE /api/productos/:id - Eliminar un producto (requiere autenticación)
-router.delete('/:id', authenticateToken, deleteProduct);
+router.delete('/:id', authenticateToken, isAdmin, deleteProduct);
 
 module.exports = router;
