@@ -94,10 +94,11 @@ const Navbar = ({ cartCount }) => {
               <button onClick={handleLogout} className="navbar-link navbar-logout-btn">
                 Cerrar Sesión
               </button>
+              <Link to="/profile" className="navbar-link" onClick={closeMenu}>Mi perfil</Link>
             </div>
           ) : (
             <div className="navbar-auth">
-              <Link to="/login" className="navbar-link" onClick={closeMenu}>Iniciar Sesión</Link>
+              <Link to="/login" className="navbar-link navbar-login-btn" onClick={closeMenu}>Iniciar Sesión</Link>
               <Link to="/registro" className="navbar-link navbar-register-btn" onClick={closeMenu}>Registrarse</Link>
             </div>
           )}

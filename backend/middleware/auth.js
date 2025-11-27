@@ -13,6 +13,7 @@ const authenticateToken = (req, res, next) => {
         const verified = jwt.verify(token, process.env.JWT_SECRET);
         req.user = verified;
         next();
+
     } catch (err) {
         return res.status(403).json({ message: 'Token inválido o expirado.' });
     }
@@ -20,7 +21,7 @@ const authenticateToken = (req, res, next) => {
 
 // Middleware para verificar que el usuario es admin
 const isAdmin = (req, res, next) => {
-    if (req.user.rol !== 'admin') {
+    if (req.user.rol !== 'Admin') {
         return res.status(403).json({ message: 'Acceso denegado. Permisos insuficientes.' });
     }
     next();

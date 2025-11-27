@@ -52,7 +52,12 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     const token = jwt.sign(
-        { userId: user._id, email: user.email, rol: user.rol },
+        { 
+            userId: user._id,
+            username: user.username,
+            email: user.email, 
+            rol: user.rol 
+        },
         process.env.JWT_SECRET,
         { expiresIn: '1h' }
     );
@@ -69,7 +74,15 @@ const loginUser = asyncHandler(async (req, res) => {
     });
 });
 
+// @desc Obtener el perfil de un usuario
+// @route GET /api/users/profile
+// @acces Private
+const getUserProfile = asyncHandler(async (req, res) => {
+    res.json({user: req.user})
+})
+
 module.exports = {
     createUser,
-    loginUser
+    loginUser,
+    getUserProfile
 }

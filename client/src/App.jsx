@@ -22,6 +22,7 @@ import RegistroPage from './pages/RegistroPage';
 import LoginPage from './pages/LoginPage';
 import PerfilPage from './pages/PerfilPage';
 import MisPedidosPage from './pages/MisPedidosPage';
+
 function AppContent() {
   const { showToast } = useToast();
   const [cart, setCart] = useState([]);
@@ -60,14 +61,14 @@ function AppContent() {
             <Route 
               path="/admin/crear-producto" 
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requireAdmin={true}>
                   <CrearProductoPage />
                 </ProtectedRoute>
               } 
             />
             <Route path="/registro" element={<RegistroPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/perfil"  element={ <ProtectedRoute> <PerfilPage /></ProtectedRoute>} />
+            <Route path="/profile"  element={ <ProtectedRoute> <PerfilPage /></ProtectedRoute>} />
             <Route path="/mis-pedidos" element={ <ProtectedRoute> <MisPedidosPage /></ProtectedRoute>} />
           </Routes>
         </div>

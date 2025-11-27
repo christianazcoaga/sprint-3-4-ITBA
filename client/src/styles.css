@@ -418,7 +418,8 @@ p {
 }
 
 .navbar-logout-btn,
-.navbar-register-btn {
+.navbar-register-btn,
+.navbar-login-btn {
   background: transparent;
   border: 2px solid var(--warm-alabaster);
   padding: 0.5rem 1rem;

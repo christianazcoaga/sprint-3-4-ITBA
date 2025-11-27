@@ -16,13 +16,13 @@ const router = express.Router();
 router.get('/', getAllProducts);
 router.get('/:id', getProductById);
 
-// POST /api/productos - Crear un nuevo producto (requiere autenticación)
+// Crear un nuevo producto (requiere autenticación y autorización)
 router.post('/', authenticateToken, isAdmin, createProduct);
 
-// PUT /api/productos/:id - Actualizar un producto existente (requiere autenticación)
+// Actualizar un producto existente (requiere autenticación y autorización)
 router.put('/:id', authenticateToken, isAdmin, updateProduct);
 
-// DELETE /api/productos/:id - Eliminar un producto (requiere autenticación)
+// Eliminar un producto (requiere autenticación y autorización)
 router.delete('/:id', authenticateToken, isAdmin, deleteProduct);
 
 module.exports = router;
