@@ -14,7 +14,7 @@ Tienda online de muebles de diseño con gestión completa de productos, carrito 
 
 ## 👥 Información del Proyecto
 
-**Proyecto:** Sprint 3, 4, 5 y 6 - ITBA  
+**Proyecto:** Entrega de último sprint - ITBA  
 **Integrantes:**
 - Azcoaga, Christian
 - Bibilaqua, Matias
@@ -24,7 +24,7 @@ Tienda online de muebles de diseño con gestión completa de productos, carrito 
 
 ---
 
-## 🚀 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Backend
 - **Node.js** con **Express.js**
@@ -40,7 +40,7 @@ Tienda online de muebles de diseño con gestión completa de productos, carrito 
 
 ---
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 - Node.js (versión 16 o superior)
 - npm o yarn
@@ -77,9 +77,11 @@ PORT=3000
 
 # MongoDB Atlas Connection String
 MONGODB_URI
+```
 
 #### Obtener MongoDB URI:
-1. Ve a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+
+1. Ir a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 2. Crea un cluster gratuito
 3. En "Database" → "Connect" → "Connect your application"
 4. Copia la connection string y reemplaza `<password>` con tu contraseña
@@ -93,22 +95,11 @@ cd client
 npm install
 ```
 
-#### Configurar variables de entorno (Opcional)
-
-Crea un archivo `.env` en la carpeta `client/` si quieres personalizar la URL de la API:
-
-```env
-# URL de la API (opcional, tiene fallback automático)
-VITE_API_URL=http://localhost:3000/api
-```
-
-**Nota:** Si no creas este archivo, la aplicación usará automáticamente `http://localhost:3000/api` en desarrollo.
-
 ---
 
-## 🏃 Ejecutar el Proyecto Localmente
+## Ejecutar el Proyecto Localmente
 
-### Opción 1: Ejecutar Backend y Frontend por separado
+### Ejecutar Backend y Frontend por separado
 
 #### Iniciar el Backend
 
@@ -126,7 +117,6 @@ cd client
 npm run dev
 ```
 
-
 La aplicación estará disponible en: **http://localhost:5173**
 
 ---
@@ -140,6 +130,20 @@ La aplicación estará disponible en: **http://localhost:5173**
 - `POST /api/productos` - Crear un nuevo producto
 - `PUT /api/productos/:id` - Actualizar un producto
 - `DELETE /api/productos/:id` - Eliminar un producto
+
+### Usuarios
+
+- `GET /api/users/profile` - Obtener datos del usuario
+- `POST /api/users/register` - Registrar un nuevo usuario
+- `POST /api/users/login` - Loguear un usuario
+
+### Ordenes
+
+- `GET /api/orders` - Obtener los pedidos de un usuario
+- `GET /api/orders/:id` - Obtener un pedido por ID
+- `POST /api/orders` - Crear un nuevo pedido
+- `GET /api/orders/admin/todos` - Obtener todos los pedidos
+- `PATCH /api/orders/:id/estado` - Actualizar estado de un pedido
 
 ---
 
@@ -182,26 +186,5 @@ npm run preview    # Previsualiza la build de producción
 3. Root Directory: `client`
 4. Build Command: `npm run build` o `vite build`
 5. Output Directory: `dist`
-6. Variables de entorno (opcional):
-   - `VITE_API_URL=https://sprint-3-4-itba.onrender.com/api`
-
-
----
-
-## 📝 Variables de Entorno Necesarias
-
-### Backend (.env)
-
-```env
-PORT=3000
-MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/database
-NODE_ENV=development
-```
-
-### Frontend (.env) - Opcional
-
-```env
-VITE_API_URL=http://localhost:3000/api
-```
 
 ---
