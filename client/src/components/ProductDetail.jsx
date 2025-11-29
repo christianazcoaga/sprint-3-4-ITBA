@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import ProductImage from './ProductImage';
+import { useAuth } from '../context/AuthContext';
 
 const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, onRemoveFromCart, onDeleteProduct, isInCart, getProductQuantity }) => {
   const [deleting, setDeleting] = useState(false);
   const [cantidad, setCantidad] = useState(1);
 
+  const { user } = useAuth();
+  
   if (!producto) {
     return (
       <div className="product-detail-error">
@@ -191,6 +194,7 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, onRemoveFromCar
             </button>
           )}
           
+          { user?.rol == 'Admin' && (
           <button 
             className='delete-product-button' 
             onClick={handleDelete}
@@ -198,7 +202,8 @@ const ProductDetail = ({ producto, onAddToCart, onBackToCatalog, onRemoveFromCar
           >
             {deleting ? 'Eliminando...' : '🗑️ Eliminar Producto'}
           </button>
-          
+          )};
+
         </div>
       </div>
     </div>
