@@ -20,7 +20,7 @@ const ProductImage = ({
         onError={handleError}
         className="product-image"
         loading={priority ? 'eager' : 'lazy'}
-        fetchpriority={priority ? 'high' : 'auto'}
+        fetchPriority={priority ? 'high' : 'auto'}
       />
       <div className="product-image-fallback" style={{ display: 'none' }}>
         <div className="fallback-content">

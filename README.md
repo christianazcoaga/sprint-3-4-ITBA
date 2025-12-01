@@ -31,12 +31,14 @@ Tienda online de muebles de diseño con gestión completa de productos, carrito 
 - **MongoDB** con **Mongoose**
 - **CORS** para peticiones cross-origin
 - **dotenv** para variables de entorno
+- **Jest** para pruebas unitarias
 
 ### Frontend
 - **React 18**
 - **Vite** como bundler
 - **React Router** para navegación
 - **CSS moderno** con diseño responsivo
+- **Vitest** y **React Testing Library** para pruebas
 
 ---
 
@@ -143,6 +145,38 @@ La aplicación estará disponible en: **http://localhost:5173**
 
 ---
 
+## 🧪 Pruebas (Testing)
+
+El proyecto incluye pruebas automatizadas tanto para el frontend como para el backend.
+
+### Ejecutar Pruebas del Backend
+
+```bash
+cd backend
+npm test
+```
+
+Las pruebas del backend incluyen:
+- ✅ Validadores de productos y usuarios
+- ✅ Funciones de cálculo de pedidos
+- ✅ Validación de stock y datos
+- ✅ Cálculo de totales y descuentos
+
+### Ejecutar Pruebas del Frontend
+
+```bash
+cd client
+npm test
+```
+
+Las pruebas del frontend incluyen:
+- ✅ Componentes React
+- ✅ Contextos (Auth, Cart, Toast)
+- ✅ Páginas principales
+- ✅ Rutas protegidas
+
+---
+
 ## 🔧 Scripts Disponibles
 
 ### Backend
@@ -150,6 +184,7 @@ La aplicación estará disponible en: **http://localhost:5173**
 ```bash
 npm start          # Inicia el servidor en modo producción
 npm run dev        # Inicia el servidor con nodemon (desarrollo)
+npm test           # Ejecuta las pruebas unitarias con Jest
 ```
 
 ### Frontend
@@ -158,6 +193,7 @@ npm run dev        # Inicia el servidor con nodemon (desarrollo)
 npm run dev        # Inicia el servidor de desarrollo con Vite
 npm run build      # Construye la aplicación para producción
 npm run preview    # Previsualiza la build de producción
+npm test           # Ejecuta las pruebas con Vitest
 ```
 
 ---
